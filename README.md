@@ -77,6 +77,10 @@ fun LazyLayout(
 | **Skipped Count** | Maximum | Optimal stability for all UI nodes |
 | **Layout Phase** | Optimized | Minimal measurement passes and efficient node placement |
 
-## Record Screen
+## Record Screen Recomposition
 
 https://github.com/user-attachments/assets/0f20df46-4128-4395-97d2-eab08b15b809
+
+## Record Screen APP
+
+https://github.com/user-attachments/assets/b1d54c8f-921f-413e-a553-ee3911ef9404
