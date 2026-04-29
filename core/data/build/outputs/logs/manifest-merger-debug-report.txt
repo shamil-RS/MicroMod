@@ -1,0 +1,18 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml:1:1-7:12
+INJECTED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml:1:1-7:12
+	package
+		INJECTED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml:1:11-69
+application
+ADDED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml:3:5-5:19
+uses-sdk
+INJECTED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml
+INJECTED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\git\NewAp\Navigation3Apps\Micro-ModularDesignSystemExplorer\core\data\src\main\AndroidManifest.xml
