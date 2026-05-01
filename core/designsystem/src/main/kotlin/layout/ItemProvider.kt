@@ -4,16 +4,14 @@ import androidx.compose.foundation.lazy.layout.LazyLayoutItemProvider
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.runtime.derivedStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import com.example.micromod.core.model.ListItem
 import com.example.micromod.core.model.ViewBoundaries
 
 @Composable
 fun rememberItemProvider(customLazyListScope: CustomLazyListScope.() -> Unit): ItemProvider {
-    val customLazyListScopeState = remember { mutableStateOf(customLazyListScope) }.apply {
-        value = customLazyListScope
-    }
+    val customLazyListScopeState = rememberUpdatedState(customLazyListScope)
 
     return remember {
         ItemProvider(
