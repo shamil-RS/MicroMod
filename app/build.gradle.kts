@@ -80,4 +80,6 @@ dependencies {
     implementation(projects.core.model)
     implementation(projects.core.network)
     implementation(projects.core.navigation)
+
+    implementation(libs.kotlinx.collections.immutable)
 }

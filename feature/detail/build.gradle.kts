@@ -11,4 +11,5 @@ dependencies {
     implementation(project(":core:navigation"))
 
     implementation(project(":core:designsystem"))
+    implementation(libs.kotlinx.collections.immutable)
 }

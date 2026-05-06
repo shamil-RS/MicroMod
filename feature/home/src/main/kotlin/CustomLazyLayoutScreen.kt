@@ -1,6 +1,5 @@
 package com.example.micromod.feature.home
 
-import DetailCardArtist
 import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -27,18 +26,20 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
 import coil.compose.AsyncImage
 import com.example.micromod.core.designsystem.layout.CustomLazyLayout
 import com.example.micromod.core.designsystem.layout.LocalConfig
 import com.example.micromod.core.designsystem.layout.rememberLazyLayoutState
 import com.example.micromod.core.model.ListItem
+import kotlinx.collections.immutable.PersistentList
 
 val LocalConfig = staticCompositionLocalOf { LocalConfig() }
 
 @Composable
-fun CustomLazyLayoutScreen(artists: List<ListItem>, navStack: NavBackStack<NavKey>) {
+fun CustomLazyLayoutScreen(
+    artists: PersistentList<ListItem>,
+    onNavigateToArtistDetail: (ListItem) -> Unit
+) {
     val config = LocalConfig.current
 
     val configuration = LocalConfiguration.current
@@ -67,7 +68,7 @@ fun CustomLazyLayoutScreen(artists: List<ListItem>, navStack: NavBackStack<NavKe
             items(artists) { artist ->
                 ArtistCard(
                     item = artist,
-                    onClick = { navStack.add(DetailCardArtist(artist.id, artist.name)) }
+                    onClick = { onNavigateToArtistDetail(artist) }
                 )
             }
         }

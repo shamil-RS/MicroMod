@@ -33,19 +33,18 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
 import coil.compose.AsyncImage
 import com.example.micromod.core.designsystem.util.toMMSS
 import com.example.micromod.core.model.AlbumItem
 import com.example.micromod.core.model.AlbumTrackItem
+import kotlinx.collections.immutable.PersistentList
 
 @Composable
 fun ArtistDetail(
     artistName: String,
-    albums: List<AlbumItem>,
-    tracks: List<AlbumTrackItem>,
-    navBackStack: NavBackStack<NavKey>
+    albums: PersistentList<AlbumItem>,
+    tracks: PersistentList<AlbumTrackItem>,
+    onBackClick: () -> Unit
 ) {
     val albumCover = albums.firstOrNull()?.image ?: ""
 
@@ -71,7 +70,7 @@ fun ArtistDetail(
                     imageVector = Icons.Default.ArrowBackIosNew,
                     modifier = Modifier
                         .padding(horizontal = 10.dp, vertical = 20.dp)
-                        .clickable { navBackStack.removeLastOrNull() },
+                        .clickable { onBackClick() },
                     contentDescription = "",
                     tint = Color.White
                 )
@@ -107,7 +106,7 @@ fun ArtistDetail(
             }
         }
 
-        items(tracks) { track ->
+        items(tracks, key = { it.id }) { track ->
             TrackRow(
                 title = track.title,
                 imageUrl = albumCover,

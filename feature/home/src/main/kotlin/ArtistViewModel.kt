@@ -8,6 +8,9 @@ import com.example.micromod.core.model.Coordinates
 import com.example.micromod.core.model.ListItem
 import com.example.micromod.network.di.ArtistApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toPersistentList
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -38,7 +41,7 @@ class ArtistViewModel @Inject constructor(
                         image = artist.pictureMedium,
                         coordinates = Coordinates(x = x, y = y)
                     )
-                }
+                }.toPersistentList()
 
                 _state.update { it.copy(artistList = artists) }
             } catch (e: Exception) {
@@ -53,7 +56,7 @@ class ArtistViewModel @Inject constructor(
                 val albumsResponse = api.getArtistAlbums(artistId)
                 val albums = albumsResponse.data.map {
                     AlbumItem(it.id, it.title, it.cover)
-                }
+                }.toPersistentList()
 
                 _state.update { it.copy(albumList = albums) }
 
@@ -71,7 +74,7 @@ class ArtistViewModel @Inject constructor(
                 val tracksResponse = api.getAlbumTracks(albumId)
                 val tracks = tracksResponse.data.map {
                     AlbumTrackItem(it.id, it.title, it.duration)
-                }
+                }.toPersistentList()
                 _state.update { it.copy(albumTracksList = tracks) }
             } catch (e: Exception) {
                 e.printStackTrace()
@@ -95,7 +98,7 @@ class ArtistViewModel @Inject constructor(
 }
 
 data class StateUi(
-    val artistList: List<ListItem> = emptyList(),
-    val albumList: List<AlbumItem> = emptyList(),
-    val albumTracksList: List<AlbumTrackItem> = emptyList(),
+    val artistList: PersistentList<ListItem> = persistentListOf(),
+    val albumList: PersistentList<AlbumItem> = persistentListOf(),
+    val albumTracksList: PersistentList<AlbumTrackItem> = persistentListOf(),
 )
